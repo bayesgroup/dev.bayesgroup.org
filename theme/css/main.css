@@ -2019,7 +2019,9 @@
                 width: 100%;
             }
 
+        .avatar-highlighter,
         .image.avatar {
+            display: inline-block;
             border-radius: 100%;
             overflow: hidden;
         }
@@ -3111,6 +3113,7 @@
     line-height: 1.5em;
 }
 
+#alumni .avatar-highlighter,
 #alumni .image.avatar {
     width: 7em;
     height: 7em;
@@ -3120,6 +3123,10 @@
     min-width: 7em;
     min-height: 7em;
 }
+
+:target .avatar-highlighter { outline: 3px solid #4bbb8b }
+:target .avatar-highlighter .image.avatar { border: 3px solid #fff }
+:target .avatar-highlighter .image.avatar img { margin: -3px 0 0 -3px }
 
 #people .image.avatar {
     width: 9em;
@@ -3133,6 +3140,7 @@
 
 @media screen and (max-width: 736px) {
 
+    #alumni .avatar-highlighter,
     #alumni .image.avatar {
         width: 6em;
         height: 6em;
@@ -3157,6 +3165,7 @@
 
 @media screen and (max-width: 480px) {
 
+    #alumni .avatar-highlighter,
     #alumni .image.avatar {
         width: 4em;
         height: 4em;
@@ -3239,6 +3248,14 @@
     padding-right: 60px;
     min-height: 50px;
 }
+
+.entry img {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.entry img.teaser-medium { max-width: 80% }
 
 .entry li li {
     font-size: 0.8em;
@@ -3372,3 +3389,70 @@
 .author-alumni {
     opacity: 0.7
 }
+
+.ribbon-container {
+    display: inline-block;
+    position: relative;
+    line-height: 100%;
+}
+
+#recent-publications-list .ribbon-container { font-size: 0.8em }
+h2 .ribbon-container { font-size: 0.5em; vertical-align: middle; margin-left: -0.5em }
+h2 .ribbon-left { padding: 0.5em }
+
+.ribbon-left,
+.ribbon-right {
+    background: #eee;
+    display: block;
+    padding: 0.3em 0.5em;
+    white-space: nowrap;
+    font-weight: normal;
+}
+
+.ribbon-left { border-right: 0.2em solid #ccc; margin-right: 0.2em }
+.ribbon-right { border-left: 0.2em solid #ccc; margin-left: 0.2em }
+
+.ribbon-right:before, .ribbon-right:after,
+.ribbon-left:before, .ribbon-left:after {
+    content: '';
+    position: absolute;
+}
+
+.ribbon-left:before, .ribbon-left:after {
+    border-left: 0.5em solid transparent;
+    left: -0.5em;
+}
+.ribbon-right:before, .ribbon-right:after {
+    border-right: 0.5em solid transparent;
+    right: -0.5em;
+}
+
+.ribbon-left:before { top: 0; border-top: 1em solid #eee }
+.ribbon-left:after { bottom: 0; border-bottom: 1em solid #eee }
+
+.ribbon-right:before { top: 0; border-top: 1em solid #eee }
+.ribbon-right:after { bottom: 0; border-bottom: 1em solid #eee }
+
+.ribbon-green {
+    background: #4bbb8b;
+    color: #fff;
+    border-right-color: #8ad9b7;
+    border-left-color: #8ad9b7;
+    text-shadow: 2px 2px 2px rgb(0 0 0 / 10%);
+}
+.ribbon-green:before { border-top-color: #4bbb8b }
+.ribbon-green:after { border-bottom-color: #4bbb8b }
+
+.ribbon-teal {
+    background: #469e9a;
+    color: #fff;
+    border-right-color: #69b1bf;
+    border-left-color: #69b1bf;
+    text-shadow: 2px 2px 2px rgb(0 0 0 / 10%);
+}
+.ribbon-teal:before { border-top-color: #469e9a }
+.ribbon-teal:after { border-bottom-color: #469e9a }
+
+.paginator { display: block; position: relative; text-align: center; border-top: 3px solid #f0f0f0; margin-top:1em; padding-top:1em }
+.paginator-new { display: inline-block; position: absolute; left: 1em }
+.paginator-old { display: inline-block; position: absolute; right: 1em }
