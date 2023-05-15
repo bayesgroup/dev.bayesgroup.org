@@ -1,0 +1,37 @@
+name: Deploy to prod
+
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          path: dev
+        
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.DEPLOY_KEY_PRIVATE }}
+          known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+        
+      - name: Copy
+        run: |
+          git clone git@github.com:bayesgroup/bayesgroup.ru.git prod
+          rm -rf prod/*
+          cp -R dev/* prod/
+          echo 'bayesgroup.ru' > prod/CNAME
+    
+      - name: Deploy
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions Runner"
+          cd prod
+          git add *
+          git commit -a -m "`(cd ../dev; git log -1 --pretty=%B)`\n- from dev@`(cd ../dev; git rev-parse HEAD)`"
+          git push
