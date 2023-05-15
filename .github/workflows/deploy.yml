@@ -33,5 +33,5 @@ jobs:
           git config --global user.name "GitHub Actions Runner"
           cd prod
           git add *
-          git commit -a -m "`(cd ../dev; git log -1 --pretty=%B)`\n- from dev@`(cd ../dev; git rev-parse HEAD)`"
+          git commit -a -m "`(cd ../dev; git log -1 --pretty=%B)`" -m "- from dev@`(cd ../dev; git rev-parse HEAD)`"
           git push
