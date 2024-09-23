@@ -22,10 +22,10 @@ jobs:
         
       - name: Copy
         run: |
-          git clone git@github.com:bayesgroup/bayesgroup.ru.git prod
+          git clone git@github.com:bayesgroup/bayesgroup.org.git prod
           rm -rf prod/*
           cp -R dev/* prod/
-          echo 'bayesgroup.ru' > prod/CNAME
+          echo 'bayesgroup.org' > prod/CNAME
     
       - name: Deploy
         run: |
